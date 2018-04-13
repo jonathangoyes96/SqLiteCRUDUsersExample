@@ -1,5 +1,10 @@
 package com.optic.sqlitecrudusersexample.models;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.optic.sqlitecrudusersexample.contracts.LawyersContract;
+
 import java.util.UUID;
 
 /**
@@ -45,5 +50,21 @@ public class Lawyer {
 
     public String getAvatarUri() {
         return avatarUri;
+    }
+
+
+
+    /*
+     * METODO QUE RETORNA LOS VALORES A INSERTAR EN LA BASE DE DATOS
+     */
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(LawyersContract.LawyerEntry.ID, id);
+        values.put(LawyersContract.LawyerEntry.NAME, name);
+        values.put(LawyersContract.LawyerEntry.SPECIALTY, specialty);
+        values.put(LawyersContract.LawyerEntry.PHONE_NUMBER, phoneNumber);
+        values.put(LawyersContract.LawyerEntry.BIO, bio);
+        values.put(LawyersContract.LawyerEntry.AVATAR_URI, avatarUri);
+        return values;
     }
 }
